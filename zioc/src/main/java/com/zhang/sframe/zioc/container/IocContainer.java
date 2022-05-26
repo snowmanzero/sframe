@@ -1,10 +1,12 @@
 package com.zhang.sframe.zioc.container;
 
 import com.zhang.sframe.zcommon.verify.util.CollectionUtil;
-import com.zhang.sframe.zioc.util.BeanUtils;
+import com.zhang.sframe.zioc.filter.BeanFilter;
+import com.zhang.sframe.zioc.util.BeanUtil;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -42,9 +44,24 @@ public class IocContainer {
 
     private void initBean() {
         // todo
-        List<Class<?>> classes = BeanUtils.getClasses(packName);
+        List<Class<?>> classes = BeanUtil.getClasses(packName);
 
         // 过滤出注解标记的类
+        filted(classes);
+
+        System.out.println(beanMap);
+    }
+
+    private void filted(List<Class<?>> classes) {
+        classes.stream().filter(new BeanFilter()).forEach(item -> {
+            try {
+                beanMap.put(item.getName().toLowerCase(Locale.US), item.newInstance());
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private void initAttributes() {

@@ -9,11 +9,10 @@ import java.io.FileFilter;
  * @author snow
  * @date 2022/05/25
  */
-public class BeanFileFilter implements FileFilter {
-
+public class ClassFileFilter implements FileFilter {
     @Override
     public boolean accept(File file) {
-        System.out.println("BeanFileFilter:" + file);
+//        System.out.println("BeanFileFilter:" + file);
         return file.isDirectory() || file.getName().endsWith(".class");
     }
 }

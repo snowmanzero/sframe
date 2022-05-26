@@ -4,7 +4,7 @@ import com.zhang.sframe.zcommon.constant.SpecialConst;
 import com.zhang.sframe.zcommon.util.FileUtil;
 import com.zhang.sframe.zcommon.verify.util.CollectionUtil;
 import com.zhang.sframe.zcommon.verify.util.StringUtil;
-import com.zhang.sframe.zioc.filter.BeanFileFilter;
+import com.zhang.sframe.zioc.filter.ClassFileFilter;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,11 +21,11 @@ import java.util.List;
  * @author snow
  * @date 2022/05/25
  */
-public class BeanUtils {
+public class BeanUtil {
     public static List<Class<?>> getClasses(String packName) {
 
         String packPath = packName.replace(SpecialConst.Dot, SpecialConst.SLASH);
-        System.out.println("path:" + packPath);
+//        System.out.println("path:" + packPath);
 
         // 所有类集合
         List<Class<?>> allClasses = new ArrayList<>();
@@ -53,9 +53,9 @@ public class BeanUtils {
             e.printStackTrace();
         }
 
-        for (Class<?> clazz : allClasses) {
-            System.out.println(clazz);
-        }
+//        for (Class<?> clazz : allClasses) {
+//            System.out.println(clazz);
+//        }
         return allClasses;
     }
 
@@ -70,7 +70,7 @@ public class BeanUtils {
         }
 
         List<Class<?>> clazzList = new ArrayList<>();
-        for (File file : packFile.listFiles(new BeanFileFilter())) {
+        for (File file : packFile.listFiles(new ClassFileFilter())) {
             if (!file.isDirectory()) {
                 // 不是文件夹 说明是class文件
                 String filename = FileUtil.getNameWithoutSuffix(file);
