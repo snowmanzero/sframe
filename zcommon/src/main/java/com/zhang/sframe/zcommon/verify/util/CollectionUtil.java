@@ -4,6 +4,12 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * 集合工具类
+ *
+ * @author snow
+ * @since 2022/05/26
+ */
 public class CollectionUtil {
     public static boolean isEmpty(Collection collection) {
         return Objects.isNull(collection) || collection.size() == 0;

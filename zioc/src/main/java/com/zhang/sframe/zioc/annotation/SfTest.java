@@ -4,7 +4,7 @@ import java.lang.annotation.*;
 
 /**
  * @author snow
- * @date 2022/05/26
+ * @since 2022/05/26
  */
 @SfBean
 @Target({ElementType.TYPE}) // 只能用在类上

@@ -7,7 +7,7 @@ import java.io.FileFilter;
  * bean文件过滤器
  *
  * @author snow
- * @date 2022/05/25
+ * @since 2022/05/25
  */
 public class ClassFileFilter implements FileFilter {
     @Override

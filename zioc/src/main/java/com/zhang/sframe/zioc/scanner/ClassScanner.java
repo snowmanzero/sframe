@@ -1,4 +1,4 @@
-package com.zhang.sframe.zioc.util;
+package com.zhang.sframe.zioc.scanner;
 
 import com.zhang.sframe.zcommon.constant.SpecialConst;
 import com.zhang.sframe.zcommon.util.FileUtil;
@@ -16,16 +16,15 @@ import java.util.Enumeration;
 import java.util.List;
 
 /**
- * Bean工具类
+ * ClassScanner
  *
  * @author snow
- * @date 2022/05/25
+ * @since 2022/05/28
  */
-public class BeanUtil {
+public class ClassScanner {
     public static List<Class<?>> getClasses(String packName) {
 
         String packPath = packName.replace(SpecialConst.Dot, SpecialConst.SLASH);
-//        System.out.println("path:" + packPath);
 
         // 所有类集合
         List<Class<?>> allClasses = new ArrayList<>();
@@ -42,7 +41,7 @@ public class BeanUtil {
                         allClasses.addAll(classes);
                     }
                 } else if ("jar".equals(protocol)) {
-                    // todo
+                    // todo 又干啥来着？？？ 以后todo必需写清要干啥orz
                     List<Class<?>> classes = new ArrayList<>();
                     if (CollectionUtil.isNotEmpty(classes)) {
                         allClasses.addAll(classes);
@@ -53,9 +52,6 @@ public class BeanUtil {
             e.printStackTrace();
         }
 
-//        for (Class<?> clazz : allClasses) {
-//            System.out.println(clazz);
-//        }
         return allClasses;
     }
 

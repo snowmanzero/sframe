@@ -6,14 +6,18 @@ import com.zhang.sframe.zioc.container.IocContainer;
  * 应用上下文
  *
  * @author snow
- * @date 2022/05/24
+ * @since 2022/05/24
  */
 public class SelfApplicationContext {
+
+    private final String[] args;
+    private final Class<?> clazz;
+
     private IocContainer container;
 
     public <T> SelfApplicationContext(Class<T> clazz, String[] args) {
-        container = new IocContainer(clazz, args);
-//        container.init();
+        this.clazz = clazz;
+        this.args = args;
     }
 
     /**
@@ -26,6 +30,12 @@ public class SelfApplicationContext {
      */
     public <T> T getBean(String name, Class<T> clazz) {
         return container.getBean(name, clazz);
+    }
+
+    public void run() {
+        // 初始化
+        container = IocContainer.getIocContainer(clazz, args);
+        container.init();
     }
 
 }

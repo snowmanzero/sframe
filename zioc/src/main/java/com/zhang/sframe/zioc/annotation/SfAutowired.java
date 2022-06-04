@@ -6,14 +6,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 标识是个Service服务。
- * // todo 需要支持自定义名称
+ * SfAutowired
+ * 标识需要注入依赖。默认依据类型注入。可传入类名，依据类名注入。
  *
  * @author snow
- * @since 2022/05/26
+ * @since 2022/06/05
  */
-@SfBean // 继承SfBean
-@Target({ElementType.TYPE}) // 只能用在类上
+@Target({ElementType.FIELD}) // 只能用在字段上
 @Retention(RetentionPolicy.RUNTIME) // 声明生命周期，保留到运行时
-public @interface SfService {
+public @interface SfAutowired {
 }

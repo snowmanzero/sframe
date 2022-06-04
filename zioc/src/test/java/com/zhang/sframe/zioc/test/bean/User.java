@@ -8,4 +8,5 @@ import com.zhang.sframe.zioc.annotation.SfTest;
  */
 @SfTest
 public class User {
+    public String age;
 }

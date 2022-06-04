@@ -9,16 +9,18 @@ import java.util.function.Predicate;
  * Bean过滤器。过滤出被SfBean注解标识的Bean。
  *
  * @author snow
- * @date 2022/05/26
+ * @since 2022/05/26
  */
 public class BeanFilter implements Predicate<Class<?>> {
     @Override
     public boolean test(Class<?> clazz) {
+        System.out.println("aaaa::"+ clazz + ">>>>" + clazz.isAnnotationPresent(SfBean.class));
         Annotation[] annotations = clazz.getAnnotations();
         if (annotations.length == 0) {
-            // 无注解的类直接过滤掉。
+            // 无注解的类直接过扔掉。
             return false;
         }
+
         for (Annotation annotation : annotations) {
             // todo 避免死循环，需要排除元注解，不参与递归判断
             // 当前以自定义注解放到第一位规避死循环
